@@ -10,6 +10,7 @@ dotenv.config({ path: './config/config.env' })
 
 // Route files
 const bootcamps = require('./routes/bootcamps')
+const courses = require('./routes/courses')
 
 // MongoDB configuration
 connectDB();
@@ -26,7 +27,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Mount routers
-app.use(process.env.APP_URL, bootcamps);
+app.use(`${process.env.APP_URL}/bootcamps`, bootcamps);
+app.use(`${process.env.APP_URL}/courses`, courses);
 
 // error middleware
 app.use(errorHandler);
